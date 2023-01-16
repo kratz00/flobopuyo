@@ -10,16 +10,10 @@ if(NOT CMAKE_CONFIGURATION_TYPES AND NOT (CMAKE_BUILD_TYPE OR DEFINED ENV{CMAKE_
     set_property(CACHE CMAKE_BUILD_TYPE PROPERTY VALUE "${DEFAULT_BUILD_TYPE}")
 endif()
 
-find_package(BISON REQUIRED)
-find_package(FLEX REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(SDL REQUIRED)
 find_package(SDL_image REQUIRED)
 find_package(SDL_mixer REQUIRED)
-
-BISON_TARGET(SCENAR_PARSER scenar.y ${CMAKE_CURRENT_BINARY_DIR}/scenar.y.cpp DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/scenar.y.h)
-FLEX_TARGET(SCENAR_SCANNER scenar.l ${CMAKE_CURRENT_BINARY_DIR}/scenar.l.cpp)
-ADD_FLEX_BISON_DEPENDENCY(SCENAR_SCANNER SCENAR_PARSER)
 
 set(C_FILES
     audio.c
@@ -54,11 +48,8 @@ add_executable(flobopuyo
     PuyoIA.cpp
     PuyoLock.cpp
     PuyoStarter.cpp
-    PuyoStory.cpp
     PuyoView.cpp
     SDL_Painter.cpp
-    ${BISON_SCENAR_PARSER_OUTPUTS}
-    ${FLEX_SCENAR_SCANNER_OUTPUTS}
     ${C_FILES}
 )
 

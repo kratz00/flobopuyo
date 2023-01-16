@@ -6,7 +6,6 @@
 #include "PuyoCommander.h"
 #include "PuyoStarter.h"
 #include "PuyoVersion.h"
-#include "PuyoStory.h"
 #include "preferences.h"
 #include "InputManager.h"
 #include "HiScores.h"
@@ -667,11 +666,7 @@ void PuyoCommander::run()
     start_time = SDL_GetTicks ();
     
     audio_music_start (0);
-    
-    /*  PuyoStory *introStory = new PuyoStory(this, 0);
-    introStory->loop();
-    delete introStory; */
-    
+
     menu_show (menu);
     
     while (1) {
@@ -1304,8 +1299,6 @@ mml_play:
   int fini = 0;  
   while (!fini)
   {
-    PuyoStory myStory(this, score2+1);
-    myStory.loop();
     PuyoStarter myStarter(this, true, ia[score2].level, ia[score2].type, currentMusicTheme);
     p1name = playerName;
     p2name = AI_NAMES[score2];
