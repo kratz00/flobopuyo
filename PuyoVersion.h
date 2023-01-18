@@ -1,1 +1,1 @@
-extern char *kVersion;
+extern const char *kVersion;

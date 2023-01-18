@@ -24,7 +24,7 @@
 
 class Exception {
 	public:
-		Exception(char *exception);
+		Exception(const char *exception);
 		~Exception();
 		void printMessage();
 		const char *getMessage();

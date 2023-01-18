@@ -76,19 +76,19 @@ class PuyoCommander
 extern SDL_Surface *display;
 extern class PuyoCommander *theCommander;
 
-extern char *kYouDidIt;
-extern char *kNextLevel;
-extern char *kLooser;
-extern char *kCurrentLevel;
-extern char *kContinueLeft;
-extern char *kGameOver;
-extern char *kYouGotToLevel;
-extern char *kHitActionToContinue;
-extern char *kContinue;
-extern char *kPlayer;
-extern char *kScore;
-extern char *kContinueGame;
-extern char *kAbortGame;
-extern char *kOptions;
+extern const char *kYouDidIt;
+extern const char *kNextLevel;
+extern const char *kLooser;
+extern const char *kCurrentLevel;
+extern const char *kContinueLeft;
+extern const char *kGameOver;
+extern const char *kYouGotToLevel;
+extern const char *kHitActionToContinue;
+extern const char *kContinue;
+extern const char *kPlayer;
+extern const char *kScore;
+extern const char *kContinueGame;
+extern const char *kAbortGame;
+extern const char *kOptions;
 
 #endif // _PUYOCOMMANDER
