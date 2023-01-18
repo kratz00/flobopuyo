@@ -1074,17 +1074,14 @@ void PuyoCommander::enterStringLoop(Menu *menu, const char *kItem, char out[256]
           menu_set_value(menu, kItem, prevValue);
           return;
       }
+      SDL_EnableUNICODE( SDL_ENABLE );
       switch (e.type) {
         case SDL_KEYDOWN:
           {
             char ch = 0;
-            if ((e.key.keysym.sym >= SDLK_a) && (e.key.keysym.sym <= SDLK_z))
-              ch = e.key.keysym.sym;
-
-            if ((ch >= 'a') && (ch <= 'z')) {
-              if ((len == 0) || (out[len-1] == ' '))
-                ch = ch - 'a' + 'A';
-            }
+            if (((e.key.keysym.sym >= SDLK_a) && (e.key.keysym.sym <= SDLK_z)) ||
+                ((e.key.keysym.sym >= SDLK_0) && (e.key.keysym.sym <= SDLK_9)))
+              ch = e.key.keysym.unicode;
 
             if (e.key.keysym.sym == SDLK_SPACE)
               ch = ' ';
@@ -1104,6 +1101,7 @@ void PuyoCommander::enterStringLoop(Menu *menu, const char *kItem, char out[256]
           }
           break;
       }
+      SDL_EnableUNICODE( SDL_DISABLE );
     }
     updateAll(NULL);
   }
@@ -1216,9 +1214,7 @@ void PuyoCommander::startSingleGameLoop()
       defaultName = "Player";
     if (!(defaultName[0]>=32))
       defaultName = "Player";
-    if ((defaultName[0]>='a') && (defaultName[0]<='z'))
-      defaultName[0] += 'A' - 'a';
-    
+
   GetStrPreference("Player Name", playerName, defaultName);
   menu_set_value(singleGameMenu, kPlayerName, playerName, 0);
 
