@@ -18,7 +18,7 @@ Sound  *sound_bim[2];
 #include "glSDL.h"
 static Mix_Music *music[4];
 
-static char *MUSIC_THEME[2][4] = {
+static const char *MUSIC_THEME[2][4] = {
   { "flobopuyo_menu.xm", "flobopuyo_game1.xm", "flobopuyo_game2.xm", "flobopuyo_gameover.xm" },
   { "flobopuyo_menu.xm", "strange_fear.xm", "strange_fear2.xm", "strange_gameover.xm" }
 };
@@ -29,7 +29,7 @@ static int sound_on;
 static int music_on;
 static int currentMus = -1;
 
-static Sound *CustomMix_LoadWAV(char *path, char *fileName, int volume)
+static Sound *CustomMix_LoadWAV(const char *path, const char *fileName, int volume)
 {
     Sound *result;
     char temp[1024];
@@ -41,7 +41,7 @@ static Sound *CustomMix_LoadWAV(char *path, char *fileName, int volume)
     return result;
 }
 
-static Mix_Music *CustomMix_LoadMUS(char *path, char *fileName)
+static Mix_Music *CustomMix_LoadMUS(const char *path, const char *fileName)
 {
     Mix_Music *result;
     char temp[1024];

@@ -7,10 +7,10 @@
 #include "PuyoCommander.h"
 
 #ifndef DATADIR
-char *DATADIR = "data";
+const char *DATADIR = "data";
 #endif
 
-char *dataFolder = "data";
+const char *dataFolder = "data";
 
 #ifdef MACOSX
 const char *bundleDataPath = "/Contents/Resources/data";
@@ -34,7 +34,7 @@ void show(CFStringRef formatString, ...) {
 }
 #endif
 
-bool fileExists(char *path)
+bool fileExists(const char *path)
 {
     FILE *f;
     f = fopen(path, "r");

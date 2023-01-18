@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-Exception::Exception(char *exception)
+Exception::Exception(const char *exception)
 {
 	message = (char *) malloc(strlen(exception) + 1);
 	strcpy(message, exception);

@@ -31,7 +31,7 @@ const char *p1name;
 const char *p2name;
 
 extern Menu *menu_pause;
-static char *BACKGROUND[NB_MUSIC_THEME] = { "Background.jpg", "BackgroundDark.jpg" };
+static const char *BACKGROUND[NB_MUSIC_THEME] = { "Background.jpg", "BackgroundDark.jpg" };
 extern IIM_Surface *background, *fallingBlue, *fallingRed, *fallingGreen, *fallingViolet, *fallingYellow, *neutral;
 
 static void loadShrinkXplode2(int i, float dec)
