@@ -207,10 +207,10 @@ void PuyoView::cycleAnimation()
     attachedPuyoFactory.cycleWalhalla();
     
     // Cycling view's animations
-    if (viewAnimations.getSize() > 0) {
-        PuyoAnimation *currentAnimation = (PuyoAnimation *)(viewAnimations.getElementAt(0));
+    if (!viewAnimations.empty()) {
+        VanishSoundAnimation *currentAnimation = viewAnimations.at(0);
         if (currentAnimation->isFinished()) {
-            viewAnimations.removeElementAt(0);
+            viewAnimations.erase(viewAnimations.cbegin());
             delete currentAnimation;
         }
         else {
@@ -321,8 +321,8 @@ void PuyoView::render()
 	}
     
     // Drawing the view animation
-    if (viewAnimations.getSize() > 0) {
-        PuyoAnimation *currentAnimation = (PuyoAnimation *)(viewAnimations.getElementAt(0));
+    if (!viewAnimations.empty()) {
+        Animation *currentAnimation = viewAnimations.at(0);
         if (!currentAnimation->isFinished()) {
             currentAnimation->draw(0);
         }
@@ -379,12 +379,12 @@ void PuyoView::puyoDidFall(PuyoPuyo *puyo, int originX, int originY)
     ((AnimatedPuyo *)puyo)->addAnimation(new FallingAnimation(*(AnimatedPuyo *)puyo, originY, xOffset, yOffset, 16));
 }
 
-void PuyoView::puyoWillVanish(IosVector &puyoGroup, int groupNum, int phase)
+void PuyoView::puyoWillVanish(std::vector<PuyoPuyo*> &puyoGroup, int groupNum, int phase)
 {
     AnimationSynchronizer *synchronizer = new AnimationSynchronizer();
-    viewAnimations.addElement(new VanishSoundAnimation(phase, synchronizer));
-    for (int i = 0, j = puyoGroup.getSize() ; i < j ; i++) {
-        AnimatedPuyo *currentPuyo = (AnimatedPuyo *)(puyoGroup.getElementAt(i));
+    viewAnimations.push_back(new VanishSoundAnimation(phase, synchronizer));
+    for (int i = 0, j = puyoGroup.size() ; i < j ; i++) {
+        AnimatedPuyo *currentPuyo = (AnimatedPuyo *)(puyoGroup.at(i));
         currentPuyo->addAnimation(new VanishAnimation(*currentPuyo, i*2 , xOffset, yOffset, synchronizer));
     }
     // A revoir
