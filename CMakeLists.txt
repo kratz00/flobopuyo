@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.13)
 
 project(flobopuyo CXX)
 
-add_compile_options(-fpermissive)
-
 set(DEFAULT_BUILD_TYPE "Debug")
 if(NOT CMAKE_CONFIGURATION_TYPES AND NOT (CMAKE_BUILD_TYPE OR DEFINED ENV{CMAKE_BUILD_TYPE}))
     message(STATUS "Setting build type to '${DEFAULT_BUILD_TYPE}' as none was specified.")
@@ -38,9 +36,7 @@ add_executable(flobopuyo
     GameControls.cpp
     HiScores.cpp
     InputManager.cpp
-    IosException.cpp
     IosImgProcess.cpp
-    IosVector.cpp
     main.cpp
     PuyoAnimations.cpp
     PuyoCommander.cpp

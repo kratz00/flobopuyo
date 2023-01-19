@@ -1,4 +1,4 @@
-#include "IosVector.h"
+#include <vector>
 
 #ifdef _WIN32
 #define srandom srand
@@ -36,7 +36,7 @@ public:
 	PuyoRandomSystem();
 	PuyoState getPuyoForSequence(int sequence);
 private:
-	IosVector sequenceItems;
+	std::vector<PuyoState> sequenceItems;
 };
 
 // A PuyoPuyo is an entity of the game
@@ -80,7 +80,7 @@ public:
 				int companionVector,
 				bool counterclockwise) = 0;
   virtual void puyoDidFall(PuyoPuyo *puyo, int originX, int originY) = 0;
-  virtual void puyoWillVanish(IosVector &puyoGroup, int groupNum, int phase) = 0;
+  virtual void puyoWillVanish(std::vector<PuyoPuyo*> &puyoGroup, int groupNum, int phase) = 0;
   virtual void gameDidEndCycle() = 0;
   virtual void gameLost() = 0;
 };
@@ -174,7 +174,7 @@ public:
   PuyoPuyo *unmoveablePuyo;
   
   // We are keeping a list of current puyos
-  IosVector puyoVector;
+  std::vector<PuyoPuyo*> puyoVector;
   int nbFalled;
 };
 

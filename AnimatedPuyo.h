@@ -29,7 +29,7 @@
 #include "SDL_Painter.h"
 #include "PuyoGame.h"
 #include "PuyoAnimations.h"
-#include "IosVector.h"
+#include <vector>
 
 class PuyoView;
 
@@ -49,7 +49,7 @@ public:
     int getScreenCoordinateX() const;
     int getScreenCoordinateY() const;
 private:
-    IosVector animationQueue;
+    std::vector<PuyoAnimation*> animationQueue;
     int puyoEyeState;
     unsigned int smallTicksCount;
     bool visibilityFlag;
@@ -66,7 +66,7 @@ public:
     void renderWalhalla();
     void cycleWalhalla();
 private:
-    IosVector puyoWalhalla;
+    std::vector<PuyoPuyo*> puyoWalhalla;
     PuyoView *attachedView;
 };
 
