@@ -44,7 +44,7 @@ bool fileExists(const char *path)
     return true;
 }
 
-#include <SDL/SDL_main.h>
+#include <SDL_main.h>
 
 int main(int argc, char *argv[])
 {

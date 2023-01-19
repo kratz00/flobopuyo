@@ -4,7 +4,7 @@
 /// AUDIO
 
 #ifdef USE_AUDIO
-#include <SDL/SDL_mixer.h>
+#include <SDL_mixer.h>
 typedef Mix_Chunk Sound;
 #else
 #define Sound void
