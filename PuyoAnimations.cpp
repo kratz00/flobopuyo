@@ -60,8 +60,9 @@ bool Animation::isEnabled() const
 IIM_Surface *NeutralAnimation::neutral = NULL;
 NeutralAnimation::NeutralAnimation(AnimatedPuyo &puyo, int delay) : PuyoAnimation(puyo)
 {
-    if (neutral == NULL)
+    if (neutral == NULL) {
         neutral = PuyoView::getSurfaceForState(PUYO_NEUTRAL);
+    }
 	this->X = attachedPuyo.getScreenCoordinateX();
 	this->Y = attachedPuyo.getScreenCoordinateY();
 	this->currentY = attachedPuyo.getAttachedView()->getScreenCoordinateY(0);
