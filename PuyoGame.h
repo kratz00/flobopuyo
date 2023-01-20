@@ -109,13 +109,13 @@ public:
   void rotateRight();
   PuyoState getNextFalling();
   PuyoState getNextCompanion();
-  PuyoState getCompanionState() const { return companionPuyo->getPuyoState(); }
-  PuyoState getFallingState() const { return fallingPuyo->getPuyoState(); }
+  PuyoState getCompanionState() const { return companionPuyo ? companionPuyo->getPuyoState() : PUYO_EMPTY; }
+  PuyoState getFallingState() const { return fallingPuyo ? fallingPuyo->getPuyoState() : PUYO_EMPTY; }
 
-  int getFallingX() const { return fallingPuyo->getPuyoX(); }
-  int getFallingY() const { return fallingPuyo->getPuyoY(); }
-  int getCompanionX() const { return companionPuyo->getPuyoX(); }
-  int getCompanionY() const { return companionPuyo->getPuyoY(); }
+  int getFallingX() const { return fallingPuyo ? fallingPuyo->getPuyoX() : 0; }
+  int getFallingY() const { return fallingPuyo ? fallingPuyo->getPuyoY() : 0; }
+  int getCompanionX() const { return companionPuyo ? companionPuyo->getPuyoX() : 0; }
+  int getCompanionY() const { return companionPuyo ? companionPuyo->getPuyoY() : 0; }
   int getFallingCompanionX() const;
   int getFallingCompanionY() const;
   int getFallingCompanionDir() const { return fallingCompanion; }
