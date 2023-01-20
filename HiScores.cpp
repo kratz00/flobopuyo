@@ -45,10 +45,18 @@ int setHiScore(int score, const char * name)
   }
 
   hiscore * tmp = (hiscore*)malloc(sizeof(hiscore));
-  hiscore * tmp2= (hiscore*)malloc(sizeof(hiscore));
 
-  if ((tmp==NULL) || (tmp2 == NULL))
+  if (tmp==NULL)
   {
+    fprintf(stderr,"Malloc failed, I won't save your score...");
+    return retour;
+  }
+
+  hiscore * tmp2 = (hiscore*)malloc(sizeof(hiscore));
+
+  if (tmp2 == NULL)
+  {
+    free(tmp);
     fprintf(stderr,"Malloc failed, I won't save your score...");
     return retour;
   }
