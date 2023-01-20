@@ -245,15 +245,13 @@ static int _CalcChop(glSDL_TexInfo *txi)
 			--rows;
 			break;
 		}
-		lastw = w;
-		lasth = h;
 		minsize = size;
 	}
 	if(minsize > maxtexsize)
 	{
 		/* Handle multiple textures for very wide/tall surfaces. */
 		minsize = maxtexsize;
-		rows = (vw + minsize-1) / minsize;
+		DBG3(rows = (vw + minsize-1) / minsize);
 	}
 	DBG3(fprintf(stderr, "==> minsize=%d ", minsize));
 	DBG3(fprintf(stderr, "(rows=%d) \t", rows));
