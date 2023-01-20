@@ -424,6 +424,8 @@ void PuyoStarter::run(int _score1, int _score2, int lives, int point1, int point
                             case GameControlEvent::kPlayer2TurnRight:
                                 keysDown[FPKEY_P2_TurnRight] = 0;
                                 break;
+                            default:
+                                break;
                         }
                     }
                     else {
@@ -648,6 +650,8 @@ void PuyoStarter::run(int _score1, int _score2, int lives, int point1, int point
                                     commander->optionMenuLoop(this);
                                     menu_show (menu_pause);
                                 }
+                                break;
+                            default:
                                 break;
                         }
                     }

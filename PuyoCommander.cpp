@@ -1030,6 +1030,8 @@ void PuyoCommander::backLoop(Menu *menu, PuyoDrawable *starter)
                 case GameControlEvent::kBack:
                     goto mml_fin;
                     break;
+                default:
+                    break;
             }
         }
         updateAll(starter);
@@ -1073,6 +1075,8 @@ void PuyoCommander::enterStringLoop(Menu *menu, const char *kItem, char out[256]
           strcpy(out, prevValue);
           menu_set_value(menu, kItem, prevValue);
           return;
+        default:
+           break;
       }
       SDL_EnableUNICODE( SDL_ENABLE );
       switch (e.type) {
@@ -1154,6 +1158,8 @@ void PuyoCommander::startTwoPlayerGameLoop()
             case GameControlEvent::kBack:
                 menu_hide(twoPlayerGameMenu);
                 return;
+                break;
+            default:
                 break;
         }
     }
@@ -1248,6 +1254,8 @@ void PuyoCommander::startSingleGameLoop()
             case GameControlEvent::kBack:
                 menu_hide(singleGameMenu);
                 return;
+                break;
+            default:
                 break;
         }
     }
