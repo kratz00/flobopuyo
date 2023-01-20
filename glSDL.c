@@ -973,7 +973,7 @@ static __inline__ void gl_blendfunc(GLenum sfactor, GLenum dfactor)
 	glstate.dfactor = dfactor;
 }
 
-static __inline__ void gl_texture(GLuint tx)
+static __inline__ void gl_texture(GLint tx)
 {
 	if(tx == glstate.texture)
 		return;

@@ -37,7 +37,7 @@ PuyoRandomSystem::PuyoRandomSystem()
     srandom(SDL_GetTicks());
 }
 
-PuyoState PuyoRandomSystem::getPuyoForSequence(int sequence)
+PuyoState PuyoRandomSystem::getPuyoForSequence(unsigned int sequence)
 {
 	if (sequenceItems.size() <= sequence) {
 		PuyoState newItem = static_cast<PuyoState>((random() % 5) + PUYO_FALLINGBLUE);
