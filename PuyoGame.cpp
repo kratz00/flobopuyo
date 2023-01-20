@@ -61,37 +61,27 @@ bool PuyoPuyo::isFalling()
 
 PuyoState PuyoPuyo::getPuyoState()
 {
-    if (this != NULL)
-        return state;
-    return PUYO_EMPTY;
+    return state;
 }
 
 void PuyoPuyo::setPuyoState(PuyoState state)
 {
-  if (this != NULL)
-  this->state = state;
+    this->state = state;
 }
 
 int PuyoPuyo::getPuyoX() const
 {
-  if (this != NULL)
     return X;
-  return 0;
 }
 
 int PuyoPuyo::getPuyoY() const
 {
-  if (this != NULL)
     return Y;
-  return 0;
 }
 
 void PuyoPuyo::setPuyoXY(int X, int Y)
 {
-  if (this != NULL)
-  {
     this->X = X; this->Y = Y;
-  }
 }
 
 PuyoGame::PuyoGame(PuyoRandomSystem *attachedRandom,
@@ -650,7 +640,7 @@ void PuyoGame::notifyReductions()
                     for (int u = 0 ; u < PUYODIMX ; u++) {
                         for (int v = 0 ; v <= PUYODIMY ; v++) {
                             PuyoPuyo *markedPuyo = getPuyoAt(u, v);
-                            if (markedPuyo->getPuyoState() == PUYO_MARKED) {
+                            if (markedPuyo && markedPuyo->getPuyoState() == PUYO_MARKED) {
                                 // mark the puyo so we wont'do the job twice
                                 markedPuyo->setFlag();
                                 removedPuyos.push_back(markedPuyo);

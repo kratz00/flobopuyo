@@ -109,19 +109,19 @@ struct PosEvaluator {
     /* Puyo companion */
     if (c_y < PUYODIMY-1) /* Si on est pas completement en bas */
     {
-      if ((c_x<(PUYODIMX - 1)) && (c_color == (game->getPuyoAt(c_x+1,c_y))->getPuyoState())) /* Test du pattern a droite */
+      if ((c_x<(PUYODIMX - 1)) && (c_color == (game->getPuyoCellAt(c_x+1,c_y)))) /* Test du pattern a droite */
       {
-        PuyoState cColorA = (game->getPuyoAt(c_x+1,c_y+1))->getPuyoState();
-        if ((c_color!=cColorA) && (cColorA>5) && (cColorA<11) && (cColorA == (game->getPuyoAt(c_x+1,c_y-1))->getPuyoState()))
+        PuyoState cColorA = (game->getPuyoCellAt(c_x+1,c_y+1));
+        if ((c_color!=cColorA) && (cColorA>5) && (cColorA<11) && (cColorA == (game->getPuyoCellAt(c_x+1,c_y-1))))
         {
           score += game->getSamePuyoAround(c_x+1, c_y, cColorA)*IASecondLevelPuyoValue;
         }
       }
                     
-      if ((c_x>0) && (c_color == (game->getPuyoAt(c_x-1,c_y))->getPuyoState())) /* Test du pattern a gauche */
+      if ((c_x>0) && (c_color == (game->getPuyoCellAt(c_x-1,c_y)))) /* Test du pattern a gauche */
       {
-        PuyoState cColorB = (game->getPuyoAt(c_x-1,c_y+1))->getPuyoState();
-        if ((c_color!=cColorB) && (cColorB>5) && (cColorB<11) && (cColorB == (game->getPuyoAt(c_x-1,c_y-1))->getPuyoState()))
+        PuyoState cColorB = (game->getPuyoCellAt(c_x-1,c_y+1));
+        if ((c_color!=cColorB) && (cColorB>5) && (cColorB<11) && (cColorB == (game->getPuyoCellAt(c_x-1,c_y-1))))
         {
           score += game->getSamePuyoAround(c_x-1, c_y, cColorB)*IASecondLevelPuyoValue;
         }
@@ -129,7 +129,7 @@ struct PosEvaluator {
     }
     if (c_y < PUYODIMY-2) /* Si on est pas trop en bas */
     {
-      if (c_color == (game->getPuyoAt(c_x,c_y+2))->getPuyoState())
+      if (c_color == (game->getPuyoCellAt(c_x,c_y+2)))
       {
         score += game->getSamePuyoAround(c_x, c_y+2, c_color)*IASecondLevelPuyoValue;
       }
@@ -138,19 +138,19 @@ struct PosEvaluator {
     /* Puyo principal */
     if (f_y < PUYODIMY-1)  /* Si on est pas completement en bas */
     {
-      if ((f_x<(PUYODIMX - 1)) && (f_color == (game->getPuyoAt(f_x+1,f_y))->getPuyoState())) /* Test du pattern a droite */
+      if ((f_x<(PUYODIMX - 1)) && (f_color == (game->getPuyoCellAt(f_x+1,f_y)))) /* Test du pattern a droite */
       {
         PuyoState fColorA = (game->getPuyoAt(f_x+1,f_y+1))->getPuyoState();
-        if ((f_color!=fColorA) && (fColorA>5) && (fColorA<11) && (fColorA == (game->getPuyoAt(f_x+1,f_y-1))->getPuyoState()))
+        if ((f_color!=fColorA) && (fColorA>5) && (fColorA<11) && (fColorA == (game->getPuyoCellAt(f_x+1,f_y-1))))
         {
           score += game->getSamePuyoAround(f_x+1, f_y, fColorA)*IASecondLevelPuyoValue;
         }
       }
                                   
-      if ((f_x>0) && (f_color == (game->getPuyoAt(f_x-1,f_y))->getPuyoState())) /* Test du pattern a gauche */
+      if ((f_x>0) && (f_color == (game->getPuyoCellAt(f_x-1,f_y)))) /* Test du pattern a gauche */
       {
-        PuyoState fColorB = (game->getPuyoAt(f_x-1,f_y+1))->getPuyoState();
-        if ((f_color!=fColorB) && (fColorB>5) && (fColorB<11) && (fColorB == (game->getPuyoAt(f_x-1,f_y-1))->getPuyoState()))
+        PuyoState fColorB = (game->getPuyoCellAt(f_x-1,f_y+1));
+        if ((f_color!=fColorB) && (fColorB>5) && (fColorB<11) && (fColorB == (game->getPuyoCellAt(f_x-1,f_y-1))))
         {
           score += game->getSamePuyoAround(f_x-1, f_y, fColorB)*IASecondLevelPuyoValue;
         }
@@ -158,7 +158,7 @@ struct PosEvaluator {
     }
     if (f_y < PUYODIMY-2) /* Si on est pas trop en bas */
     {
-      if (f_color == (game->getPuyoAt(f_x,f_y+2))->getPuyoState())
+      if (f_color == (game->getPuyoCellAt(f_x,f_y+2)))
       {
         score += game->getSamePuyoAround(f_x, f_y+2, f_color)*IASecondLevelPuyoValue;
       }
