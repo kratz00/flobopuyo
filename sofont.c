@@ -197,7 +197,7 @@ sdcRects (SDL_Rect * source, SDL_Rect * destination, SDL_Rect clipping)
 	int     dwx, dhy;
 
 	// Use if destination have the same size than source &
-	// cliping on destination
+	// clipping on destination
 	int     dx = clipping.x - destination->x;
 	int     dy = clipping.y - destination->y;
 
@@ -291,7 +291,7 @@ SoFont_load (SoFont * font, IIM_Surface * FontSurface)
 	int     _Spacing[256];
 
 	if (!FontSurface) {
-		fprintf (stderr, "SoFont recieved a NULL SDL_Surface\n");
+		fprintf (stderr, "SoFont received a NULL SDL_Surface\n");
 		return 0;
 	}
 	font->picture = FontSurface;
