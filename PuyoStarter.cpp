@@ -744,7 +744,6 @@ void PuyoStarter::run(int _score1, int _score2, int lives, int point1, int point
                 if(event.type == SDL_QUIT) {
                     if (menu_active_is(commander->gameOverMenu, "YES"))
                         menu_next_item(commander->gameOverMenu);
-                    quit = 1;
                     exit(0);
                 }
         }

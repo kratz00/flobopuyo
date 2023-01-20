@@ -507,7 +507,6 @@ void SDL_drawTriangle_TG(SDL_Surface *surf, int x1, int y1, int x2, int y2,
 	/* avoid compiler warnings... */
 	aa = 0.0;
 	aastep = 0.0;
-	aaoffset = 0;
 
 #	define __TRI_DRAW(PB, B, SLOPE) \
 	{ \
