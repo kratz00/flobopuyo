@@ -5,7 +5,6 @@
 
 /// MENU ITEMS
 
-#include "glSDL.h"
 #include "sofont.h"
 
 /// gestion des items du menu

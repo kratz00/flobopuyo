@@ -23,12 +23,10 @@
  *
  */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
 #include "PuyoGame.h"
-#include "audio.h"
-#include "glSDL.h"
-
+#include <SDL_timer.h>
 
 static int fallingTable[PUYODIMX] = {0, 3, 1, 4, 2, 5};
 

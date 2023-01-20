@@ -1,8 +1,7 @@
 #ifndef _GAME_CONT_H
 #define _GAME_CONT_H
 
-#include "glSDL.h"
-#include "InputManager.h"
+#include <SDL_events.h>
 
 typedef struct GameControlEvent {
     enum {

@@ -26,11 +26,11 @@
 #ifndef _PUYOVIEW
 #define _PUYOVIEW
 
-#include "glSDL.h"
 #include "PuyoGame.h"
 #include "IosImgProcess.h"
 #include "PuyoAnimations.h"
 #include "AnimatedPuyo.h"
+#include "SDL_Painter.h"
 
 #define TSIZE 32
 #define ASIZE 32

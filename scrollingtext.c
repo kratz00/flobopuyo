@@ -1,5 +1,6 @@
 /* file created on Wed Aug 28 15:38:28 CEST 2002 by doom */
 
+#include <stdbool.h>
 #include "scrollingtext.h"
 #include <string.h>
 #include <stdlib.h>
