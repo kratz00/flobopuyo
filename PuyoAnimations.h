@@ -26,9 +26,8 @@
 #ifndef _PUYOANIMATIONS
 #define _PUYOANIMATIONS
 
-#include <stdlib.h>
-#include <math.h>
-#include "glSDL.h"
+#include <cstdlib>
+#include <cmath>
 #include "IosImgProcess.h"
 #include "PuyoGame.h"
 

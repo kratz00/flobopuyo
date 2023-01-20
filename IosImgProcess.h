@@ -1,7 +1,8 @@
 #ifndef _IOS_IMG_PROCESS
 #define _IOS_IMG_PROCESS
 
-#include "glSDL.h"
+#include <SDL_stdinc.h>
+#include <SDL_video.h>
 
 typedef struct _RGBA {
   Uint8 red;

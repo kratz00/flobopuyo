@@ -1,5 +1,6 @@
 /* file created on Wed Aug 28 13:32:02 CEST 2002 by doom */
 
+#include <stdbool.h>
 #include "menuitems.h"
 #include <string.h>
 #include <stdlib.h>

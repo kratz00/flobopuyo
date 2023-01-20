@@ -23,17 +23,14 @@
  *
  */
 
-#include <stdlib.h>
-#include <math.h>
-#include <unistd.h>
+#include <cstdlib>
+#include <cmath>
 #include "PuyoView.h"
 #include "PuyoAnimations.h"
 #include "AnimatedPuyo.h"
 #include "PuyoGame.h"
 #include "audio.h"
 #include "IosImgProcess.h"
-#include "HiScores.h"
-#include "PuyoDoomMelt.h"
 
 #include "SDL_Painter.h"
 SDL_Painter painter;

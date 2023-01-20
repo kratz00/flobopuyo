@@ -1,4 +1,5 @@
 #include "PuyoStarter.h"
+#include "GameControls.h"
 #include "PuyoView.h"
 
 #include "SDL_Painter.h"

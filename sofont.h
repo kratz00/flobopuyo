@@ -40,7 +40,6 @@
 #ifndef __SOFONT_H
 #define __SOFONT_H
 
-#include "glSDL.h"
 #include "IosImgProcess.h"
 
 typedef struct _SOFONT SoFont;

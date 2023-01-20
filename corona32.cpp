@@ -9,10 +9,8 @@
 #include "corona32.h"
 #include "corona.h"
 #include "corona_palette.h"
+#include <cstdlib>
 
-#include <stdlib.h>
-#include <sys/time.h>
-#include <time.h>
 
 #define WIDTH  400
 #define HEIGHT 300

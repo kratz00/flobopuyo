@@ -26,7 +26,6 @@
 #ifndef _ANIMATEDPUYO
 #define _ANIMATEDPUYO
 
-#include "SDL_Painter.h"
 #include "PuyoGame.h"
 #include "PuyoAnimations.h"
 #include <vector>

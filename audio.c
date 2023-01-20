@@ -1,5 +1,7 @@
 #include <string.h>
+#include <SDL_timer.h>
 #include "audio.h"
+#include <stdbool.h>
 
 extern char *dataFolder;
 
@@ -15,7 +17,6 @@ Sound  *sound_bim[2];
 
 
 #ifdef USE_AUDIO
-#include "glSDL.h"
 static Mix_Music *music[4];
 
 static const char *MUSIC_THEME[2][4] = {

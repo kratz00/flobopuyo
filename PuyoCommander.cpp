@@ -1,7 +1,7 @@
-#include <stdlib.h>
-#include <math.h>
-#include <unistd.h>
-#include <string.h>
+#include <cstdlib>
+#include <cmath>
+#include <cstring>
+#include "GameControls.h"
 #include "glSDL.h"
 #include "PuyoCommander.h"
 #include "PuyoStarter.h"

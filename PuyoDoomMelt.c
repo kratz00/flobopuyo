@@ -23,6 +23,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <stdbool.h>
 #include "PuyoDoomMelt.h"
 
 /* A few definitions */

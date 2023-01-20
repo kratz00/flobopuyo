@@ -20,7 +20,6 @@
 #ifndef _PUYODOOMMELT
 #define _PUYODOOMMELT
 
-#include "glSDL.h"
 #include "IosImgProcess.h"
 
 typedef struct _DoomMelt DoomMelt;

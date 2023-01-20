@@ -1,8 +1,8 @@
 #ifndef _INPUT_SW_MAN_H
 #define _INPUT_SW_MAN_H
 
-#include "glSDL.h"
-#include <string.h>
+#include <SDL_events.h>
+#include <cstring>
 
 const int JOYSTICK_THRESHOLD = 25000;
 

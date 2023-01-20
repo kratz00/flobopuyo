@@ -21,7 +21,7 @@
 
 #include "PuyoLock.h"
 
-#include "stdio.h"
+#include <cstdio>
 
 PuyoLock::PuyoLock()
 {

@@ -1,5 +1,5 @@
 #include "SDL_Painter.h"
-#include <stdlib.h>
+#include <cstdlib>
 
 // #define DEBUG
 

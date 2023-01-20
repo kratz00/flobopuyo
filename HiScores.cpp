@@ -1,6 +1,6 @@
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include <cstring>
+#include <cstdlib>
+#include <cstdio>
 #include "preferences.h"
 #include "HiScores.h"
 

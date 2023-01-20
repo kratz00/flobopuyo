@@ -1,6 +1,7 @@
 #include "IosImgProcess.h"
-#include <math.h>
-#include <stdlib.h>
+#include <SDL_image.h>
+#include <cmath>
+#include <cstdlib>
 
 
 extern char *dataFolder;

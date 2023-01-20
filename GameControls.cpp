@@ -1,4 +1,5 @@
 #include "GameControls.h"
+#include "InputManager.h"
 #include "preferences.h"
 
 #define NB_CONTROLS 10

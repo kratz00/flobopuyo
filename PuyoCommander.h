@@ -4,7 +4,6 @@
 #include "sofont.h"
 #include "menu.h"
 #include "scrollingtext.h"
-#include "GameControls.h"
 #include "PuyoDoomMelt.h"
 
 #include "corona32.h"

@@ -1,5 +1,5 @@
-#include <stdlib.h>
-#include <string.h>
+#include <cstdlib>
+#include <cstring>
 #ifdef MACOSX
 #include <CoreFoundation/CoreFoundation.h>
 #endif
