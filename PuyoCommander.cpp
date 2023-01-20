@@ -583,7 +583,7 @@ PuyoCommander::PuyoCommander(bool fs, bool snd, bool audio)
     exit(1);
   }
 #endif
-
+  SDL_WM_SetCaption("FloboPuyo", "FloboPuyo");
   initControllers();
   initHiScores(AI_NAMES);
   
