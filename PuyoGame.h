@@ -34,7 +34,7 @@ enum PuyoState {
 class PuyoRandomSystem {
 public:
 	PuyoRandomSystem();
-	PuyoState getPuyoForSequence(int sequence);
+	PuyoState getPuyoForSequence(unsigned int sequence);
 private:
 	std::vector<PuyoState> sequenceItems;
 };
@@ -163,7 +163,7 @@ public:
   
   PuyoPuyo *puyoCells[PUYODIMX * (PUYODIMY+1)];
   PuyoRandomSystem *attachedRandom;
-  int sequenceNr;
+  unsigned int sequenceNr;
   int neutralPuyos;
   PuyoDelegate *delegate;
   PuyoFactory *attachedFactory;
