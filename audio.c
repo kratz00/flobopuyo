@@ -59,7 +59,6 @@ audio_init ()
 	int     audio_rate;
 	Uint16  audio_format;
 	int     audio_channels;
-  int i;
 
 	sound_supported =
     (Mix_OpenAudio (MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024) == 0);

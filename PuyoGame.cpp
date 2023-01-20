@@ -666,7 +666,6 @@ void PuyoGame::notifyReductions()
 
 void PuyoGame::cycleEnding()
 {
-  static int cmpt = 0;
 	int score = removePuyos();
     
 	if (score >= 4) {
