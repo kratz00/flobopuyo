@@ -48,6 +48,7 @@ extern IIM_Surface *image;
 class PuyoView : public virtual PuyoDelegate {
   public:
     PuyoView(PuyoRandomSystem *attachedRandom, int xOffset, int yOffset, int nXOffset, int nYOffset);
+    virtual ~PuyoView() {};
     void setEnemyGame(PuyoGame *enemyGame);
     void render();
     void renderNeutral();

@@ -51,6 +51,7 @@ protected:
 class PuyoAnimation : public Animation{
 public:
     PuyoAnimation(AnimatedPuyo &puyo):attachedPuyo(puyo) {}
+    virtual ~PuyoAnimation() {};
 protected:
     AnimatedPuyo &attachedPuyo;
 };
