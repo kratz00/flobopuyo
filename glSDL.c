@@ -889,7 +889,7 @@ SDL_bool glSDL_SetClipRect(SDL_Surface *surface, SDL_Rect *rect)
 		r.w = rect->w * scale;
 		r.h = rect->h * scale;
 		surface = screen;
-		SDL_SetClipRect(surface, rect);
+		SDL_SetClipRect(surface, &r);
 	}
 
 	if( (screen == surface) &&
