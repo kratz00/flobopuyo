@@ -50,8 +50,6 @@ int     menu_visible (Menu * menu);
 // retourne l'etat du switch
 int     menu_switch_on_off (Menu * menu, const char *name);
 
-int     menu_progress_bar (Menu * menu, const char *name, int increment);
-
 ///
 /// Fonctions pour faire des choses vraiment particuliere
 ///
