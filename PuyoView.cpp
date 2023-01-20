@@ -363,8 +363,6 @@ void PuyoView::renderNeutral()
 }
 
 void PuyoView::gameDidAddNeutral(PuyoPuyo *neutralPuyo, int neutralIndex) {
-    int x = neutralPuyo->getPuyoX();
-    int y = neutralPuyo->getPuyoY();
     ((AnimatedPuyo *)neutralPuyo)->addAnimation(new NeutralAnimation(*((AnimatedPuyo *)neutralPuyo), neutralIndex * 4));
 }
 

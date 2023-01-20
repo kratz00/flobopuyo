@@ -384,7 +384,6 @@ IIM_Surface *iim_surface_set_value(IIM_Surface *isrc, float value)
 void iim_surface_convert_to_gray(IIM_Surface *isrc)
 {
   SDL_Surface *src = isrc->surf;
-  SDL_PixelFormat *fmt = src->format;
   SDL_LockSurface(src);
   for (int y=src->h; y--;)
   {
