@@ -13,9 +13,8 @@ struct DrawElt {
 class SDL_Painter
 {
   public:
-      IIM_Surface *backGround;
       IIM_Surface *gameScreen;
-/*      SDL_Surface *display; */
+      IIM_Surface *backGround;
 
       SDL_Painter(IIM_Surface *gameScreen = NULL, IIM_Surface *bg = NULL);
       void requestDraw(IIM_Surface *surf, SDL_Rect *where);
