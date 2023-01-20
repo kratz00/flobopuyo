@@ -372,9 +372,9 @@ void PuyoView::companionDidTurn(PuyoPuyo *companionPuyo, int companionVector, bo
                                                                        companionVector, counterclockwise));
 }
 
-void PuyoView::puyoDidFall(PuyoPuyo *puyo, int originX, int originY)
+void PuyoView::puyoDidFall(PuyoPuyo *puyo, int, int originY)
 {
-    ((AnimatedPuyo *)puyo)->addAnimation(new FallingAnimation(*(AnimatedPuyo *)puyo, originY, xOffset, yOffset, 16));
+    ((AnimatedPuyo *)puyo)->addAnimation(new FallingAnimation(*(AnimatedPuyo *)puyo, originY, xOffset, yOffset));
 }
 
 void PuyoView::puyoWillVanish(std::vector<PuyoPuyo*> &puyoGroup, int groupNum, int phase)

@@ -87,7 +87,7 @@ void NeutralAnimation::cycle()
     }
 }
 
-void NeutralAnimation::draw(int semiMove)
+void NeutralAnimation::draw(int)
 {
 	SDL_Rect drect;
 	drect.x = X;
@@ -200,7 +200,7 @@ void TurningAnimation::draw(int semiMove)
 const int FallingAnimation::BOUNCING_OFFSET_NUM = 12;
 const int FallingAnimation::BOUNCING_OFFSET[] = { -1, -3, -5, -4, -2, 0, -6, -9, -11, -9, -6, 0 };
 
-FallingAnimation::FallingAnimation(AnimatedPuyo &puyo, int originY, int xOffset, int yOffset, int step) : PuyoAnimation(puyo)
+FallingAnimation::FallingAnimation(AnimatedPuyo &puyo, int originY, int xOffset, int yOffset) : PuyoAnimation(puyo)
 {
     this->xOffset = xOffset;
     this->yOffset = yOffset;
@@ -234,7 +234,7 @@ void FallingAnimation::cycle()
     }
 }
 
-void FallingAnimation::draw(int semiMove)
+void FallingAnimation::draw(int)
 {
     if (puyoFace) {
         SDL_Rect drect;
@@ -294,7 +294,7 @@ void VanishAnimation::cycle()
     }
 }
 
-void VanishAnimation::draw(int semiMove)
+void VanishAnimation::draw(int)
 {
     if (iter < (10 + delay)) {
         if (puyoFace && (iter % 2 == 0)) {
@@ -369,7 +369,7 @@ void VanishSoundAnimation::cycle()
     }
 }
 
-void VanishSoundAnimation::draw(int semiMove)
+void VanishSoundAnimation::draw(int)
 {
     // do nothing
 }

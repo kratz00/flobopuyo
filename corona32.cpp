@@ -77,7 +77,7 @@ void corona32_resize(Corona32 *_this, int width, int height)
   _this->height = height;
 }
 
-void corona32_update(Corona32 *_this, int timeInMilli, short frequency[2][512])
+void corona32_update(Corona32 *_this, short frequency[2][512])
 {
   _this->tl.timeStamp ++;
   for (int i=0; i<512; ++i)

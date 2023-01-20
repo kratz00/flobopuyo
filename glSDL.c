@@ -1039,7 +1039,7 @@ FIXME: Some clipping, perhaps...? :-)
 static __inline__ void _BlitGL_single(glSDL_TexInfo *txi,
 		float x1, float y1, float x2, float y2,
 		int dx1, float dy1, float dx2, float dy2,
-		unsigned char alpha, float texscale)
+		unsigned char alpha)
 {
 	/* Select texture */
 	if(!txi->textures)
@@ -1313,7 +1313,7 @@ static int _glSDL_BlitGL(SDL_Surface *src, SDL_Rect *srcrect,
 	  case GLSDL_TM_SINGLE:
 		_BlitGL_single(txi, x1, y1, x2, y2,
 				dx1, dy1, dx2, dy2,
-				alpha, texscale);
+				alpha);
 		break;
 	  case GLSDL_TM_HORIZONTAL:
 		_BlitGL_htile(txi, x1, y1, x2, y2,
