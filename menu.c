@@ -325,29 +325,6 @@ menu_switch_on_off (Menu * menu, const char *name)
   }
 }
 
-  int
-menu_progress_bar (Menu * menu, const char *name, int increment)
-{
-  const char *svalue = menu_items_get_value (menu->items, name);
-  int     value = atoi (svalue);
-  static char nval[5];
-
-  if (increment == 0)
-    return value;
-  else {
-    value += increment;
-    if (value > 100)
-      value = 100;
-    if (value < 0)
-      value = 0;
-  }
-
-  sprintf (nval, "%d %%", value);
-  menu_set_value (menu, name, nval);
-  return value;
-}
-
-
   const char *
 menu_get_value (Menu * menu, const char *name)
 {
