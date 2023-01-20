@@ -126,7 +126,7 @@ void _init_columns (DoomMelt *_this)
 
 void _column_draw (column_t *column, SDL_Surface *meltImage, SDL_Surface *display)
 {
-    static SDL_Rect image_rect = {0, 0, COL_WIDTH, };
+    static SDL_Rect image_rect = {0, 0, COL_WIDTH, SCREEN_HEIGHT};
     static SDL_Rect dest_rect =  {0, 0, COL_WIDTH, SCREEN_HEIGHT};
     
     int tmp = column->y;
