@@ -96,7 +96,7 @@ int     SoFont_CleverTextCursorAt (SoFont * font, const char *text, int px,
 																	 int cursPos, SDL_Rect * r);
 
 #define START_CHAR 33
-int     SoFont_getMinChar (SoFont * font);
+int     SoFont_getMinChar ();
 int     SoFont_getMaxChar (SoFont * font);
 
 #endif

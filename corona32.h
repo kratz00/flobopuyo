@@ -19,7 +19,7 @@ Corona32 *corona32_new(void);
 void      corona32_delete(Corona32 *_this);
 
 void      corona32_resize(Corona32 *_this, int widht, int height);
-void      corona32_update(Corona32 *_this, int timeInMilli, short frequency[2][512]);
+void      corona32_update(Corona32 *_this, short frequency[2][512]);
 void      corona32_displayRGBA(Corona32 *_this, int *screen);
 
 #ifdef __cplusplus

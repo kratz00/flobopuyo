@@ -157,7 +157,7 @@ main_menu_load (SoFont * font)
 }
 
 
-MenuItems two_player_game_menu_load (SoFont *font, SoFont *small_font)
+MenuItems two_player_game_menu_load (SoFont *font)
 {
   static MenuItemsTab go_menu =
   {
@@ -182,7 +182,7 @@ MenuItems two_player_game_menu_load (SoFont *font, SoFont *small_font)
   return go_menu;
 }
 
-MenuItems single_game_menu_load (SoFont *font, SoFont *small_font)
+MenuItems single_game_menu_load (SoFont *font)
 {
   static MenuItemsTab go_menu =
   {
@@ -205,7 +205,7 @@ MenuItems single_game_menu_load (SoFont *font, SoFont *small_font)
   return go_menu;
 }
 
-MenuItems gameover_2p_menu_load (SoFont *font, SoFont *small_font)
+MenuItems gameover_2p_menu_load (SoFont *font)
 {
   static MenuItemsTab go_menu = {
     MENUITEM_BLANKLINE,
@@ -442,7 +442,7 @@ MenuItems must_restart_menu_load (SoFont *font)
   return option_menu;
 }
 
-MenuItems options_menu_load (SoFont *font, SoFont *small_font)
+MenuItems options_menu_load (SoFont *font)
 {
   static MenuItemsTab option_menu = {
     MENUITEM(kFullScreen),
@@ -473,7 +473,7 @@ MenuItems options_menu_load (SoFont *font, SoFont *small_font)
   return option_menu;
 }
 
-MenuItems controls_menu_load (SoFont *font, SoFont *small_font)
+MenuItems controls_menu_load (SoFont *font)
 {
   static MenuItemsTab controls_menu = {
     //MENUITEM("Player 1 Joystick"),
@@ -618,18 +618,18 @@ PuyoCommander::PuyoCommander(bool fs, bool snd, bool audio)
 
   mainMenu = menu_new(main_menu_load(menuFont),menuselector);
   gameOver1PMenu = menu_new(gameover_1p_menu_load(menuFont, smallFont),menuselector);
-  gameOver2PMenu = menu_new(gameover_2p_menu_load(menuFont, smallFont),menuselector);
+  gameOver2PMenu = menu_new(gameover_2p_menu_load(menuFont),menuselector);
   nextLevelMenu  = menu_new(nextlevel_1p_menu_load(menuFont, smallFont),menuselector);
   looserMenu     = menu_new(looser_1p_menu_load(menuFont, smallFont),menuselector);
   finishedMenu   = menu_new(finished_1p_menu_load(menuFont, smallFont),menuselector);
   gameOverMenu   = gameOver2PMenu;
-  optionMenu     = menu_new(options_menu_load(menuFont, smallFont),menuselector);
-  controlsMenu   = menu_new(controls_menu_load(menuFont, smallFont),menuselector);
+  optionMenu     = menu_new(options_menu_load(menuFont),menuselector);
+  controlsMenu   = menu_new(controls_menu_load(menuFont),menuselector);
   rulesMenu      = menu_new(rules_menu_load(menuFont),menuselector);
   highScoresMenu = menu_new(high_scores_menu_load(menuFont),menuselector);
   aboutMenu      = menu_new(about_menu_load(menuFont),menuselector);
-  singleGameMenu    = menu_new(single_game_menu_load(menuFont,smallFont),menuselector);
-  twoPlayerGameMenu = menu_new(two_player_game_menu_load(menuFont,smallFont),menuselector);
+  singleGameMenu    = menu_new(single_game_menu_load(menuFont),menuselector);
+  twoPlayerGameMenu = menu_new(two_player_game_menu_load(menuFont),menuselector);
   mustRestartMenu   = menu_new(must_restart_menu_load(menuFont),menuselector); 
 
   if (menu_pause == NULL) menu_pause = menu_new(pause_menu_load(menuFont),menuselector);
@@ -1396,7 +1396,7 @@ void PuyoCommander::updateAll(PuyoDrawable *starter, SDL_Surface *extra_surf)
             frequency[0][i] = rand();
             frequency[1][i] = rand();
         }
-        corona32_update(corona, SDL_GetTicks(), frequency);
+        corona32_update(corona, frequency);
         corona32_displayRGBA(corona, corona_screen);
         SDL_Surface *tmpsurf =
             SDL_CreateRGBSurfaceFrom (corona_screen, 640, CORONA_HEIGHT,

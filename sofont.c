@@ -25,7 +25,7 @@ SoFont_FontHeight (SoFont * font)
 }
 
 int
-SoFont_getMinChar (SoFont * font)
+SoFont_getMinChar ()
 {
 	return START_CHAR;
 }

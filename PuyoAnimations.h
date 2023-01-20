@@ -75,7 +75,7 @@ class NeutralAnimation : public PuyoAnimation {
   public:
     NeutralAnimation(AnimatedPuyo &puyo, int delay);
     void cycle();
-    void draw(int semiMove);
+    void draw(int);
   private:
     static IIM_Surface *neutral;
     int X, Y, currentY;
@@ -102,9 +102,9 @@ private:
 class FallingAnimation : public PuyoAnimation {
 public:
     FallingAnimation(AnimatedPuyo &puyo,
-                     int originY, int xOffset, int yOffset, int step);
+                     int originY, int xOffset, int yOffset);
     void cycle();
-    void draw(int semiMove);
+    void draw(int);
 private:
     int xOffset, yOffset, step;
     int X, Y;
@@ -120,7 +120,7 @@ public:
     VanishAnimation(AnimatedPuyo &puyo, int delay, int xOffset, int yOffset, AnimationSynchronizer *synchronizer);
     virtual ~VanishAnimation();
     void cycle();
-    void draw(int semiMove);
+    void draw(int);
 private:
     IIM_Surface *puyoFace;
     int xOffset, yOffset;
@@ -135,7 +135,7 @@ public:
     VanishSoundAnimation(int phase, AnimationSynchronizer *synchronizer);
     virtual ~VanishSoundAnimation();
     void cycle();
-    void draw(int semiMove);
+    void draw(int);
 private:
     int phase;
     int step;
