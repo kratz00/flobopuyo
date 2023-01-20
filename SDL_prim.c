@@ -161,7 +161,7 @@ void SDL_blendPixel( SDL_Surface *surf, int x, int y, Uint32 clr,
 void SDL_drawLine_TG( SDL_Surface *surf, int x, int y, int x2, int y2,
                       Uint32 clr, Uint8 alpha, Uint8 flags )
 {
-	int xaa, yaa, *a, *b, *a2, *b2, da, xd, yd;
+	int xaa, yaa, *a, *b, *a2, da, xd, yd;
 	float aa, db;
 	float realb;
 
@@ -175,8 +175,6 @@ void SDL_drawLine_TG( SDL_Surface *surf, int x, int y, int x2, int y2,
 	 * *b:    reference to either x or y, depending on which way we are
 	 *        drawing.
 	 * *a2:   reference to either x2 or y2, depending on which way we are
-	 *        drawing.
-	 * *b2:   reference to either x2 or y2, depending on which way we are
 	 *        drawing.
 	 * x:     starting x value, current x value
 	 * y:     starting y value, current y value
@@ -203,7 +201,6 @@ void SDL_drawLine_TG( SDL_Surface *surf, int x, int y, int x2, int y2,
 		a = &x;
 		b = &y;
 		a2 = &x2;
-		b2 = &y2;
 		db = (float)yd / xd;
 	} else {
 	/* draw top/bottom to top/bottom */
@@ -212,7 +209,6 @@ void SDL_drawLine_TG( SDL_Surface *surf, int x, int y, int x2, int y2,
 		a = &y;
 		b = &x;
 		a2 = &y2;
-		b2 = &x2;
 		db = (float)xd / yd;
 	}
 

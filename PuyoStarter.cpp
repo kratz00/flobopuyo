@@ -339,7 +339,6 @@ void PuyoStarter::run(int _score1, int _score2, int lives, int point1, int point
     this->lives = lives;
     this->score1 = _score1;
     this->score2 = _score2;
-    SDL_Rect drect;
     SDL_Event event;
     int quit = 0;
     SDL_EnableUNICODE(1);
@@ -501,10 +500,6 @@ void PuyoStarter::run(int _score1, int _score2, int lives, int point1, int point
                         if (randomPlayer)
                           randomPlayer->cycle();
                         if (event.user.code == 1) {
-                          drect.x = 0;
-                          drect.y = 0;
-                          drect.w = 640;
-                          drect.h = 480;
 
                           if (attachedGameA->isEndOfCycle()) {
                             keysDown[FPKEY_P1_Down] = 0;
