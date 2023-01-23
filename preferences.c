@@ -161,7 +161,7 @@ static void fetchFile(void)
 #ifndef _WIN32
         char * h = getenv("HOME");
 #else
-        char * h = ".";
+        const char * h = ".";
 #endif
         if (h==NULL) return;
         home = (char *)malloc(strlen(h)+strlen(prefsfile)+2);
