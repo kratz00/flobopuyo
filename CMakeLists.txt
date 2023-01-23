@@ -22,7 +22,6 @@ set(C_FILES
     PuyoDoomMelt.c
     PuyoVersion.c
     scrollingtext.c
-    SDL_prim.c
     sofont.c
 )
 
