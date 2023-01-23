@@ -19,9 +19,10 @@ jobs:
       fail-fast: false
       matrix:
         platform:
-        - { name: Ubuntu, os: ubuntu-latest, shell: sh }
-        - { name: macOS,  os: macos-latest,  shell: sh }
-
+        - { name: Ubuntu,            os: ubuntu-latest,  shell: sh }
+        - { name: macOS,             os: macos-latest,   shell: sh }
+        - { name: Windows - mingw32, os: windows-latest, shell: 'msys2 {0}', msystem: mingw32, msys-env: mingw-w64-i686 }
+        - { name: Windows - mingw64, os: windows-latest, shell: 'msys2 {0}', msystem: mingw64, msys-env: mingw-w64-x86_64 }
     steps:
     - uses: actions/checkout@v3
 
@@ -38,8 +39,21 @@ jobs:
         brew install \
             sdl_image sdl_mixer sdl12-compat ninja
 
+    - name: Set up Windows dependencies
+      if: matrix.platform.shell == 'msys2 {0}'
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: ${{ matrix.platform.msystem }}
+        install: >-
+          ${{ matrix.platform.msys-env }}-gcc
+          ${{ matrix.platform.msys-env }}-cmake
+          ${{ matrix.platform.msys-env }}-ninja
+          ${{ matrix.platform.msys-env }}-SDL_image
+          ${{ matrix.platform.msys-env }}-SDL_mixer
+          ${{ matrix.platform.msys-env }}-SDL
+
     - name: Configure CMake
-      run: cmake -B ${{github.workspace}}/build -G Ninja
+      run: cmake -B build -G Ninja
 
     - name: Build
-      run: cmake --build ${{github.workspace}}/build --config Debug --verbose --parallel
+      run: cmake --build build --config Debug --verbose --parallel
