@@ -1,10 +1,12 @@
 #ifndef _PUYOCOMMANDER
 #define _PUYOCOMMANDER
 
-#include "sofont.h"
-#include "menu.h"
-#include "scrollingtext.h"
-#include "PuyoDoomMelt.h"
+extern "C" {
+    #include "sofont.h"
+    #include "menu.h"
+    #include "scrollingtext.h"
+    #include "PuyoDoomMelt.h"
+}
 
 #include "corona32.h"
 #define CORONA_HEIGHT 120

@@ -1,7 +1,9 @@
 #include <cstring>
 #include <cstdlib>
 #include <cstdio>
-#include "preferences.h"
+extern "C" {
+    #include "preferences.h"
+}
 #include "HiScores.h"
 
 static hiscore HS[kHiScoresNumber];

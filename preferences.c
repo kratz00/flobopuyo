@@ -9,7 +9,6 @@
 
 #include "preferences.h"
 
-
 #ifdef __APPLE__
 
 #include <CoreFoundation/CoreFoundation.h>
@@ -205,7 +204,7 @@ void SetIntPreference(const char *name, int value)
 
 int GetBoolPreference(const char *name, int defaut)
 {
-    return GetIntPreference(name,defaut)?true:false;
+    return GetIntPreference(name,defaut);
 }
 
 int GetIntPreference(const char *name, int defaut)

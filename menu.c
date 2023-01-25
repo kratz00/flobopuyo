@@ -317,11 +317,11 @@ menu_switch_on_off (Menu * menu, const char *name)
   const char *value = menu_items_get_value (menu->items, name);
 
   if (!strcmp (value, "ON")) {
-    menu_set_value (menu, name, "OFF");
+    menu_set_value (menu, name, "OFF", 1);
     return 0;
   }
   else {
-    menu_set_value (menu, name, "ON");
+    menu_set_value (menu, name, "ON", 1);
     return 1;
   }
 }

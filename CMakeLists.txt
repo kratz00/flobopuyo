@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
 
-project(flobopuyo CXX)
+project(flobopuyo C CXX)
 
 set(DEFAULT_BUILD_TYPE "Release")
 if(NOT CMAKE_CONFIGURATION_TYPES AND NOT (CMAKE_BUILD_TYPE OR DEFINED ENV{CMAKE_BUILD_TYPE}))
@@ -24,8 +24,6 @@ set(C_FILES
     scrollingtext.c
     sofont.c
 )
-
-set_source_files_properties(${C_FILES} PROPERTIES LANGUAGE CXX)
 
 add_executable(flobopuyo
     AnimatedPuyo.cpp
