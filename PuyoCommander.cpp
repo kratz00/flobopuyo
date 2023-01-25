@@ -5,12 +5,14 @@
 #include "glSDL.h"
 #include "PuyoCommander.h"
 #include "PuyoStarter.h"
-#include "PuyoVersion.h"
-#include "preferences.h"
 #include "InputManager.h"
 #include "HiScores.h"
-#include "PuyoDoomMelt.h"
 #include "IosImgProcess.h"
+extern "C" {
+    #include "PuyoVersion.h"
+    #include "preferences.h"
+    #include "PuyoDoomMelt.h"
+}
 
 #ifndef DATADIR
 extern char *DATADIR;
@@ -888,14 +890,14 @@ void PuyoCommander::controlsMenuLoop(PuyoDrawable *d)
           if (chosenControl != NULL) {
             char prevValue[255];
             strcpy(prevValue, menu_get_value (controlsMenu, chosenControl));
-            menu_set_value(controlsMenu, chosenControl, "<Choose>");
+            menu_set_value(controlsMenu, chosenControl, "<Choose>", 1);
             if (changeControlLoop(chosenControlIndex, d)) {
               getKeyName(chosenControlIndex, newKeyName);
-              menu_set_value(controlsMenu, chosenControl, newKeyName);
+              menu_set_value(controlsMenu, chosenControl, newKeyName, 1);
               menu_next_item (controlsMenu);
             }
             else {
-              menu_set_value(controlsMenu, chosenControl, prevValue);
+              menu_set_value(controlsMenu, chosenControl, prevValue, 1);
             }
           }
           break;
@@ -1053,7 +1055,7 @@ void PuyoCommander::enterStringLoop(Menu *menu, const char *kItem, char out[256]
   strcpy(prevValue, menu_get_value (menu, kItem));
   out[0] = '_';
   out[1] = 0;
-  menu_set_value(menu, kItem, "_");
+  menu_set_value(menu, kItem, "_", 1);
 
   while (1)
   {
@@ -1068,12 +1070,12 @@ void PuyoCommander::enterStringLoop(Menu *menu, const char *kItem, char out[256]
           break;
         case GameControlEvent::kStart:
           out[len] = 0;
-          menu_set_value(menu, kItem, out);
+          menu_set_value(menu, kItem, out, 1);
           menu_validate (menu);
           return;
         case GameControlEvent::kBack:
           strcpy(out, prevValue);
-          menu_set_value(menu, kItem, prevValue);
+          menu_set_value(menu, kItem, prevValue, 1);
           return;
         default:
            break;
@@ -1117,8 +1119,8 @@ void PuyoCommander::startTwoPlayerGameLoop()
   char player1Name[256];
   char player2Name[256];
 
-  GetStrPreference("Player1 Name", player1Name, "Player 1");
-  GetStrPreference("Player2 Name", player2Name, "Player 2");
+  GetStrPreference("Player1 Name", player1Name, "Player 1", 256);
+  GetStrPreference("Player2 Name", player2Name, "Player 2", 256);
   menu_set_value(twoPlayerGameMenu, kPlayer1Name, player1Name, 0);
   menu_set_value(twoPlayerGameMenu, kPlayer2Name, player2Name, 0);
 
@@ -1221,7 +1223,7 @@ void PuyoCommander::startSingleGameLoop()
     if (!(defaultName[0]>=32))
       defaultName = "Player";
 
-  GetStrPreference("Player Name", playerName, defaultName);
+  GetStrPreference("Player Name", playerName, defaultName, 256);
   menu_set_value(singleGameMenu, kPlayerName, playerName, 0);
 
   while (!menu_active_is(singleGameMenu,kLevelMedium))

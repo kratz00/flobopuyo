@@ -29,7 +29,9 @@
 #include "PuyoAnimations.h"
 #include "AnimatedPuyo.h"
 #include "PuyoGame.h"
-#include "audio.h"
+extern "C" {
+    #include "audio.h"
+}
 #include "IosImgProcess.h"
 
 #include "SDL_Painter.h"

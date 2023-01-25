@@ -1,6 +1,12 @@
 #ifndef _IOS_IMG_PROCESS
 #define _IOS_IMG_PROCESS
 
+#ifdef __cplusplus
+extern "C" {
+#else
+#include <stdbool.h>
+#endif
+
 #include <SDL_stdinc.h>
 #include <SDL_video.h>
 
@@ -59,4 +65,8 @@ void          IIM_Free(IIM_Surface *img);
 IIM_Surface * IIM_RegisterImg(SDL_Surface *img, bool isAlpha);
 void          IIM_ReConvertAll(void);
 
+#ifdef __cplusplus
+}
 #endif
+
+#endif // _IOS_IMG_PROCESS

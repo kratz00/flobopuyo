@@ -683,27 +683,27 @@ void PuyoStarter::run(int _score1, int _score2, int lives, int point1, int point
                         char score[256];
                         sprintf(winner,"%d Wins!!!",(leftPlayerWin()?1:2));
                         sprintf(score, "%d - %d", score1, score2);
-                        menu_set_value(commander->gameOverMenu, kPlayer, winner);
-                        menu_set_value(commander->gameOverMenu, kScore,  score);
+                        menu_set_value(commander->gameOverMenu, kPlayer, winner, 1);
+                        menu_set_value(commander->gameOverMenu, kScore,  score, 1);
                     }
                     else if (commander->gameOverMenu == commander->nextLevelMenu) {
                         char level[256];
                         extern char *AI_NAMES[];
                         sprintf(level, "Stage %d... Vs %s", score2+1, AI_NAMES[score2]);
-                        menu_set_value(commander->gameOverMenu, kNextLevel, level);
+                        menu_set_value(commander->gameOverMenu, kNextLevel, level, 1);
                     }
                     else if (commander->gameOverMenu == commander->looserMenu) {
                         char level[256];
                         char cont[256];
                         sprintf(level, "Stage %d... Vs %s", score2+1, p2name);
                         sprintf(cont, "%d Left", lives);
-                        menu_set_value(commander->gameOverMenu, kCurrentLevel, level);
-                        menu_set_value(commander->gameOverMenu, kContinueLeft, cont);
+                        menu_set_value(commander->gameOverMenu, kCurrentLevel, level, 1);
+                        menu_set_value(commander->gameOverMenu, kContinueLeft, cont, 1);
                     }
                     else if (commander->gameOverMenu == commander->gameOver1PMenu) {
                         char level[256];
                         sprintf(level, "Stage %d... Vs %s", score2+1, p2name);
-                        menu_set_value(commander->gameOverMenu, kYouGotToLevel, level);
+                        menu_set_value(commander->gameOverMenu, kYouGotToLevel, level, 1);
                     }
                     commander->showGameOver();
                     stopRender();
