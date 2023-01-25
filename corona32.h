@@ -23,7 +23,7 @@ void      corona32_update(Corona32 *_this, short frequency[2][512]);
 void      corona32_displayRGBA(Corona32 *_this, int *screen);
 
 #ifdef __cplusplus
-};
+}
 #endif
 
 #endif

@@ -8,6 +8,10 @@ if(NOT CMAKE_CONFIGURATION_TYPES AND NOT (CMAKE_BUILD_TYPE OR DEFINED ENV{CMAKE_
     set_property(CACHE CMAKE_BUILD_TYPE PROPERTY VALUE "${DEFAULT_BUILD_TYPE}")
 endif()
 
+if (("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU") OR ("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang"))
+    add_compile_options(-Wall -Wextra -pedantic -Werror)
+endif()
+
 find_package(OpenGL REQUIRED)
 find_package(SDL REQUIRED)
 find_package(SDL_image REQUIRED)
