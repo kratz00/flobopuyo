@@ -1,6 +1,6 @@
+#include "audio.h"
 #include <string.h>
 #include <SDL_timer.h>
-#include "audio.h"
 #include <stdbool.h>
 
 extern char *dataFolder;
@@ -54,7 +54,7 @@ static Mix_Music *CustomMix_LoadMUS(const char *path, const char *fileName)
 #endif
 
 void
-audio_init ()
+audio_init (void)
 {
 #ifdef USE_AUDIO
 	int     audio_rate;
@@ -133,7 +133,7 @@ audio_sound_play (Sound * s)
 }
 
 void
-audio_close ()
+audio_close (void)
 {
 #ifdef USE_AUDIO
   if (!sound_supported) return;

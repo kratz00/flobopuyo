@@ -25,7 +25,7 @@ SoFont_FontHeight (SoFont * font)
 }
 
 int
-SoFont_getMinChar ()
+SoFont_getMinChar (void)
 {
 	return START_CHAR;
 }
@@ -38,7 +38,7 @@ SoFont_getMaxChar (SoFont * font)
 
 
 SoFont *
-SoFont_new ()
+SoFont_new (void)
 {
 	SoFont *font = (SoFont *) malloc (sizeof (SoFont));
 

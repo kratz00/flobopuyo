@@ -44,7 +44,7 @@
 
 typedef struct _SOFONT SoFont;
 
-SoFont *SoFont_new ();
+SoFont *SoFont_new (void);
 void    SoFont_free (SoFont * font);
 
 int     SoFont_load (SoFont * font, IIM_Surface * FontSurface);
@@ -95,7 +95,7 @@ int     SoFont_CleverTextCursorAt (SoFont * font, const char *text, int px,
 																	 int cursPos, SDL_Rect * r);
 
 #define START_CHAR 33
-int     SoFont_getMinChar ();
+int     SoFont_getMinChar (void);
 int     SoFont_getMaxChar (SoFont * font);
 
 #endif

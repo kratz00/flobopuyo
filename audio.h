@@ -24,10 +24,10 @@ extern Sound *sound_yahoohoo3[NB_YAHOOHOO3];
 extern Sound *sound_splash[8];
 extern Sound  *sound_bim[2];
 
-void    audio_init ();
+void    audio_init (void);
 void    audio_music_start (int num);
 void    audio_sound_play (Sound * s);
-void    audio_close ();
+void    audio_close (void);
 
 /// volume compris entre 0 et 100;
 void    audio_music_set_volume (int vol);

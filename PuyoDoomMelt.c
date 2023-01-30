@@ -33,7 +33,7 @@
 #define COL_WIDTH 8
 #define NUM_COLS SCREEN_WIDTH / COL_WIDTH + 1
 
-static int rand_fun () {
+static int rand_fun (void) {
     return rand() % 256;
 }
 
