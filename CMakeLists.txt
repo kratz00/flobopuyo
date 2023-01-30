@@ -50,6 +50,9 @@ add_executable(flobopuyo
     ${C_FILES}
 )
 
+set_property(TARGET flobopuyo PROPERTY CXX_STANDARD 11)
+set_property(TARGET flobopuyo PROPERTY CXX_EXTENSIONS OFF)
+
 target_compile_definitions(flobopuyo
     PRIVATE USE_AUDIO
     PRIVATE HAVE_OPENGL
