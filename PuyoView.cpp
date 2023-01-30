@@ -38,6 +38,8 @@ extern "C" {
 SDL_Painter painter;
 
 SDL_Surface *display;
+SDL_Window *window;
+SDL_Renderer *renderer;
 IIM_Surface *background, *fallingBlue, *fallingRed, *fallingGreen, *fallingViolet, *fallingYellow, *neutral;
 IIM_Surface *bigNeutral;
 IIM_Surface *puyoEyes;

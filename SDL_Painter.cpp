@@ -1,8 +1,6 @@
 #include "SDL_Painter.h"
 #include <cstdlib>
 
-// #define DEBUG
-
 extern SDL_Surface *display;
 
 SDL_Painter::SDL_Painter(IIM_Surface *gameScreen, IIM_Surface *bg)
@@ -128,36 +126,6 @@ void SDL_Painter::draw(SDL_Surface *surf)
   // Pour chaque rectangle
   // Chercher les elements de la liste actuelle qui intersectent
   //  (note: j'assume que SDL fait ca aussi bien que nous)
-#ifdef DEBUG
-
-  SDL_SetClipRect(surf, NULL);
-  SDL_BlitSurface(backGround, NULL, surf, NULL);
-
-  // Draw everything.
-  for (int i=0; i<nbElts; ++i) {
-    SDL_Rect copy = onScreenElts[i].rect;
-    SDL_BlitSurface(onScreenElts[i].surf, NULL,
-        surf, &copy);
-  }
-
-  for (int r=0; r<nbRects; ++r) {
-    SDL_Rect over1 = rectToUpdate[r];
-    SDL_Rect over2 = over1;
-    SDL_Rect over3 = over2;
-    SDL_Rect over4 = over3;
-    over1.h = 1;
-    over2.w = 1;
-    over3.y += over3.h;
-    over3.h = 1;
-    over4.x += over4.w;
-    over4.w = 1;
-    SDL_FillRect(surf,&over1,0xffffffff);
-    SDL_FillRect(surf,&over2,0xffffffff);
-    SDL_FillRect(surf,&over3,0xffffffff);
-    SDL_FillRect(surf,&over4,0xffffffff);
-  }    
-
-#else
 
   for (int r=0; r<nbRects; ++r) {
     SDL_SetClipRect(surf, &rectToUpdate[r]);
@@ -169,7 +137,6 @@ void SDL_Painter::draw(SDL_Surface *surf)
                       surf, &rect);
     }
   }
-#endif
 
   // Draw what is necessary...
   storeScreenContent(surf);

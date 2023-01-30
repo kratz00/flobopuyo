@@ -1,7 +1,7 @@
 #ifndef _SDL_PAINTER_H
 #define _SDL_PAINTER_H
 
-#define MAX_PAINT_ELTS 0x800
+#define MAX_PAINT_ELTS 2048
 
 #include "IosImgProcess.h"
 

@@ -7,8 +7,7 @@ extern "C" {
 #include <stdbool.h>
 #endif
 
-#include <SDL_stdinc.h>
-#include <SDL_video.h>
+#include <SDL2/SDL.h>
 
 typedef struct _RGBA {
   Uint8 red;
@@ -63,7 +62,6 @@ IIM_Surface * IIM_Load_DisplayFormat (const char *path);
 IIM_Surface * IIM_Load_DisplayFormatAlpha (const char *path);
 void          IIM_Free(IIM_Surface *img);
 IIM_Surface * IIM_RegisterImg(SDL_Surface *img, bool isAlpha);
-void          IIM_ReConvertAll(void);
 
 #ifdef __cplusplus
 }

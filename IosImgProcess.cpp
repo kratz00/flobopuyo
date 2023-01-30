@@ -1,5 +1,6 @@
 #include "IosImgProcess.h"
-#include <SDL_image.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <cmath>
 #include <cstdlib>
 #include <cstdio>
@@ -18,31 +19,29 @@ int          imgListSize = 0;
 IIM_Surface * IIM_Load_DisplayFormat (const char *fname)
 {
   char path[1024];
-  SDL_Surface *tmpsurf, *retsurf;
+  SDL_Surface *retsurf;
   snprintf(path, 1024, "%s/gfx/%s", dataFolder, fname);
-  tmpsurf = IMG_Load (path);
-  if (tmpsurf==0) {
+  retsurf = IMG_Load (path);
+  if (retsurf==0) {
     fprintf(stderr,"Could not load %s\n", path);
     exit(1);
   }
-  retsurf = SDL_DisplayFormat (tmpsurf);
-  SDL_FreeSurface (tmpsurf);
   return IIM_RegisterImg(retsurf, false);
 }
 
 IIM_Surface * IIM_Load_DisplayFormatAlpha (const char *fname)
 {
   char path[1024];
-  SDL_Surface *tmpsurf, *retsurf;
+  SDL_Surface *retsurf;
   snprintf(path, 1024, "%s/gfx/%s", dataFolder, fname);
-  tmpsurf = IMG_Load (path);
-  if (tmpsurf==0) {
+  retsurf = IMG_Load (path);
+  if (retsurf==0) {
     fprintf(stderr,"Could not load %s\n", path);
     exit(1);
   }
-  retsurf = SDL_DisplayFormatAlpha (tmpsurf);
-  SDL_SetAlpha (retsurf, SDL_SRCALPHA | (useGL?0:SDL_RLEACCEL), SDL_ALPHA_OPAQUE);
-  SDL_FreeSurface (tmpsurf);
+  //retsurf = SDL_DisplayFormatAlpha (tmpsurf);
+  //SDL_SetAlpha (retsurf, SDL_SRCALPHA | (useGL?0:SDL_RLEACCEL), SDL_ALPHA_OPAQUE);
+  //SDL_FreeSurface (tmpsurf);
   return IIM_RegisterImg(retsurf, true);
 }
 
@@ -66,29 +65,6 @@ IIM_Surface * IIM_RegisterImg(SDL_Surface *img, bool isAlpha)
   imgList[imgListSize].w       = img->w;
   imgList[imgListSize].h       = img->h;
   return &(imgList[imgListSize++]);
-}
-
-void IIM_ReConvertAll(void)
-{
-  for (int i=0; i<imgListSize; ++i)
-  {
-    if (imgList[i].surf)
-    {
-      if (imgList[i].isAlpha)
-      {
-        SDL_Surface *retsurf = SDL_DisplayFormat(imgList[i].surf);
-        SDL_SetAlpha (retsurf, SDL_SRCALPHA | (useGL?0:SDL_RLEACCEL), SDL_ALPHA_OPAQUE);
-        SDL_FreeSurface(imgList[i].surf);
-        imgList[i].surf = retsurf;
-      }
-      else
-      {
-        SDL_Surface *retsurf = SDL_DisplayFormat(imgList[i].surf);
-        SDL_FreeSurface(imgList[i].surf);
-        imgList[i].surf = retsurf;
-      }
-    }
-  }
 }
 
 /** Image processing */
@@ -342,14 +318,14 @@ IIM_Surface *iim_surface_shift_hue(IIM_Surface *isrc, float hue_offset)
   }
   SDL_UnlockSurface(ret);
   SDL_UnlockSurface(src);
-  SDL_Surface *ret2 = SDL_DisplayFormatAlpha(ret);
-	SDL_SetAlpha(ret2, SDL_SRCALPHA | (useGL?0:SDL_RLEACCEL), SDL_ALPHA_OPAQUE);
-	SDL_FreeSurface(ret);
-  ret = isrc->surf;
-  isrc->surf = SDL_DisplayFormatAlpha(ret);
-  SDL_SetAlpha(isrc->surf, SDL_SRCALPHA | (useGL?0:SDL_RLEACCEL), SDL_ALPHA_OPAQUE);
-  SDL_FreeSurface(ret);
-  return IIM_RegisterImg(ret2, true);
+  //SDL_Surface *ret2 = SDL_DisplayFormatAlpha(ret);
+	//SDL_SetAlpha(ret2, SDL_SRCALPHA | (useGL?0:SDL_RLEACCEL), SDL_ALPHA_OPAQUE);
+	//SDL_FreeSurface(ret);
+  //ret = isrc->surf;
+  //isrc->surf = SDL_DisplayFormatAlpha(ret);
+  //SDL_SetAlpha(isrc->surf, SDL_SRCALPHA | (useGL?0:SDL_RLEACCEL), SDL_ALPHA_OPAQUE);
+  //SDL_FreeSurface(ret);
+  return IIM_RegisterImg(ret, true);
 }
 
 IIM_Surface *iim_surface_set_value(IIM_Surface *isrc, float value)
@@ -376,10 +352,10 @@ IIM_Surface *iim_surface_set_value(IIM_Surface *isrc, float value)
     }
   SDL_UnlockSurface(src);
   SDL_UnlockSurface(ret);
-  SDL_Surface *ret2 = SDL_DisplayFormatAlpha(ret);
-  SDL_SetAlpha(ret2, SDL_SRCALPHA | (useGL?0:SDL_RLEACCEL), SDL_ALPHA_OPAQUE);
-  SDL_FreeSurface(ret);
-  return IIM_RegisterImg(ret2, true);
+  //SDL_Surface *ret2 = SDL_DisplayFormatAlpha(ret);
+  //SDL_SetAlpha(ret2, SDL_SRCALPHA | (useGL?0:SDL_RLEACCEL), SDL_ALPHA_OPAQUE);
+  //SDL_FreeSurface(ret);
+  return IIM_RegisterImg(ret, true);
 }
 
 void iim_surface_convert_to_gray(IIM_Surface *isrc)
@@ -397,6 +373,6 @@ void iim_surface_convert_to_gray(IIM_Surface *isrc)
     }
   }
   SDL_UnlockSurface(src);
-  isrc->surf = SDL_DisplayFormat(src);
-  SDL_FreeSurface(src);
+  //isrc->surf = SDL_DisplayFormat(src);
+  //SDL_FreeSurface(src);
 }

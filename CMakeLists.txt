@@ -12,14 +12,34 @@ if (("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU") OR ("${CMAKE_CXX_COMPILER_ID}" MA
     add_compile_options(-Wall -Wextra -pedantic -Werror)
 endif()
 
-find_package(OpenGL REQUIRED)
-find_package(SDL REQUIRED)
-find_package(SDL_image REQUIRED)
-find_package(SDL_mixer REQUIRED)
+find_package(SDL2 REQUIRED)
+find_package(SDL2_image QUIET)
+find_package(SDL2_mixer QUIET)
+
+if(NOT SDL2_image_FOUND OR NOT SDL2_mixer_FOUND)
+    find_package(PkgConfig QUIET)
+    if(PkgConfig_FOUND AND NOT SDL2_image_FOUND)
+        pkg_check_modules(SDL2_image IMPORTED_TARGET SDL2_image)
+    endif()
+    if(PkgConfig_FOUND AND NOT SDL2_mixer_FOUND)
+        pkg_check_modules(SDL2_mixer IMPORTED_TARGET SDL2_mixer)
+    endif()
+endif()
+
+if(NOT SDL2_image_FOUND)
+    message(FATAL_ERROR "SDL2_image not found")
+endif()
+
+if(NOT SDL2_mixer_FOUND)
+    message(FATAL_ERROR "SDL2_mixer not found")
+endif()
+
+if(APPLE)
+    find_library(FRAMEWORK_FOUNDATION Foundation)
+endif()
 
 set(C_FILES
     audio.c
-    glSDL.c
     menu.c
     menuitems.c
     preferences.c
@@ -55,15 +75,8 @@ set_property(TARGET flobopuyo PROPERTY CXX_EXTENSIONS OFF)
 
 target_compile_definitions(flobopuyo
     PRIVATE USE_AUDIO
-    PRIVATE HAVE_OPENGL
     PRIVATE DATADIR=\"${CMAKE_SOURCE_DIR}/data\"
 )
-
-if(APPLE)
-    target_compile_definitions(flobopuyo
-        PRIVATE GL_SILENCE_DEPRECATION
-    )
-endif()
 
 target_include_directories(flobopuyo
     PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
@@ -71,14 +84,16 @@ target_include_directories(flobopuyo
 
 target_include_directories(flobopuyo
     SYSTEM
-    PRIVATE ${SDL_INCLUDE_DIRS}
-    PRIVATE ${SDL_IMAGE_INCLUDE_DIRS}
-    PRIVATE ${SDL_MIXER_INCLUDE_DIRS}
+    PRIVATE ${SDL2_INCLUDE_DIRS}
+    PRIVATE ${SDL2_IMAGE_INCLUDE_DIRS}
+    PRIVATE ${SDL2_MIXER_INCLUDE_DIRS}
 )
 
-target_link_libraries(flobopuyo
-    ${OPENGL_LIBRARIES}
-    ${SDL_LIBRARIES}
-    ${SDL_IMAGE_LIBRARIES}
-    ${SDL_MIXER_LIBRARIES}
+target_link_libraries(flobopuyo PRIVATE
+    $<$<BOOL:${MINGW}>:mingw32>
+    $<$<BOOL:${APPLE}>:${FRAMEWORK_FOUNDATION}>
+    SDL2::SDL2main
+    SDL2::SDL2
+    $<IF:$<BOOL:${PkgConfig_FOUND}>,$<TARGET_NAME_IF_EXISTS:PkgConfig::SDL2_image>, $<TARGET_NAME_IF_EXISTS:SDL2_image::SDL2_image>>
+    $<IF:$<BOOL:${PkgConfig_FOUND}>,$<TARGET_NAME_IF_EXISTS:PkgConfig::SDL2_mixer>, $<TARGET_NAME_IF_EXISTS:SDL2_mixer::SDL2_mixer>>
 )
