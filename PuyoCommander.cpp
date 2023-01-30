@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include <cmath>
 #include <cstring>
+#include <cstdio>
 #include "GameControls.h"
 #include "glSDL.h"
 #include "PuyoCommander.h"
@@ -744,9 +745,9 @@ void PuyoCommander::updateHighScoresMenu(int newOne)
   char tmp[256];
 #define PAS_DE_COMMENTAIRES(X,kXX) \
   if (newOne == X)  \
-    sprintf(tmp, "%s\t** %d", scores[X].name, scores[X].score); \
+    snprintf(tmp, 256, "%s\t** %d", scores[X].name, scores[X].score); \
   else \
-    sprintf(tmp, "%s\t%d", scores[X].name, scores[X].score); \
+    snprintf(tmp, 256, "%s\t%d", scores[X].name, scores[X].score); \
   menu_set_value(highScoresMenu,kXX,tmp,0);
 
   PAS_DE_COMMENTAIRES(0,k01);

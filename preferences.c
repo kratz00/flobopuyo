@@ -8,6 +8,7 @@
  */
 
 #include "preferences.h"
+#include <stdio.h>
 
 #ifdef __APPLE__
 
@@ -197,7 +198,7 @@ void SetBoolPreference(const char *name, int value)
 void SetIntPreference(const char *name, int value)
 {
   char var[256];
-  sprintf(var,"%d",value);
+  snprintf(var, 256, "%d",value);
   SetStrPreference(name,var);
 }
 
@@ -265,7 +266,7 @@ void GetStrPreference (const char *name, char *out, const char *defaut, const in
     if (file==NULL) return;
     
     char tmp[256];
-    sprintf(tmp,"%s=",name);
+    snprintf(tmp, 256, "%s=", name);
     tmplen = strlen(tmp);
 
     copiedfile = strdup(file);

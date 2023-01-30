@@ -1,4 +1,5 @@
 #include "InputManager.h"
+#include <cstdio>
 
 typedef struct SdlKeyName {
   int key;
@@ -133,7 +134,7 @@ JoystickSwitch::JoystickSwitch(int which, int button, bool isup)
 const char *JoystickSwitch::name() const {
 
   if (keyName[0] == 0)
-    sprintf(keyName, "JOY%d - Button %d", which, button);
+    snprintf(keyName, 256, "JOY%d - Button %d", which, button);
   return keyName;
 }
 
@@ -159,7 +160,7 @@ JoystickAxisSwitch::JoystickAxisSwitch(int which, int axis, bool maximum, bool i
 const char *JoystickAxisSwitch::name() const {
 
   if (keyName[0] == 0)
-    sprintf(keyName, "JOY%d - Axis %d - %s", which, axis, (maximum?"Max":"Min"));
+    snprintf(keyName, 256, "JOY%d - Axis %d - %s", which, axis, (maximum?"Max":"Min"));
   return keyName;
 }
 

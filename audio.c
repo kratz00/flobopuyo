@@ -35,7 +35,7 @@ static Sound *CustomMix_LoadWAV(const char *path, const char *fileName, int volu
     Sound *result;
     char temp[1024];
     if (!sound_supported) return NULL;
-    sprintf(temp, "%s/sfx/%s", path, fileName);
+    snprintf(temp, 1024, "%s/sfx/%s", path, fileName);
     result = Mix_LoadWAV(temp);
     if (result)
       Mix_VolumeChunk (result, volume);
@@ -47,7 +47,7 @@ static Mix_Music *CustomMix_LoadMUS(const char *path, const char *fileName)
     Mix_Music *result;
     char temp[1024];
     if (!sound_supported) return NULL;
-    sprintf(temp, "%s/sfx/%s", path, fileName);
+    snprintf(temp, 1024, "%s/sfx/%s", path, fileName);
     result = Mix_LoadMUS(temp);
     return result;
 }
