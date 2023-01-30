@@ -4,6 +4,7 @@
 
 #include "SDL_Painter.h"
 #include "IosImgProcess.h"
+#include <cstdio>
 
 extern SDL_Painter painter;
 
@@ -49,9 +50,9 @@ static void loadShrinkXplode(void)
     for (int j=1;j<=4;++j)
     {
         char f[20];
-        sprintf(f,"Shrink%d.png", j);
+        snprintf(f, 20, "Shrink%d.png", j);
         shrinkingPuyo[j-1][3] = IIM_Load_DisplayFormatAlpha(f);
-        sprintf(f,"Explode%d.png", j);
+        snprintf(f, 20, "Explode%d.png", j);
         explodingPuyo[j-1][3] = IIM_Load_DisplayFormatAlpha(f);
     }
     
@@ -122,10 +123,10 @@ void PuyoStarter::draw()
     char text[256];
     if (!randomPlayer)
     {
-        sprintf(text, "Win %d", score1);
+        snprintf(text, 256, "Win %d", score1);
         SoFont_CenteredString_XY (commander->smallFont, display,
                                   50, 460,   text, NULL);
-        sprintf(text, "Win %d", score2);
+        snprintf(text, 256, "Win %d", score2);
         SoFont_CenteredString_XY (commander->smallFont, display,
                                   590, 460, text, NULL);
     }
@@ -169,7 +170,7 @@ void PuyoStarter::draw()
     else
         fontBl = commander->menuFont;
     
-    sprintf(text, "<< %d", attachedGameA->getPoints());
+    snprintf(text, 256, "<< %d", attachedGameA->getPoints());
     SoFont_CenteredString_XY (fontBl, display,
                               300, 380,   text, NULL);
     
@@ -178,7 +179,7 @@ void PuyoStarter::draw()
     else
         fontBl = commander->menuFont;
     
-    sprintf(text, "%d >>", attachedGameB->getPoints());
+    snprintf(text, 256, "%d >>", attachedGameB->getPoints());
     SoFont_CenteredString_XY (fontBl, display,
                               340, 395, text, NULL);
 }
@@ -681,28 +682,28 @@ void PuyoStarter::run(int _score1, int _score2, int lives, int point1, int point
                     if (commander->gameOverMenu == commander->gameOver2PMenu) {
                         char winner[256];
                         char score[256];
-                        sprintf(winner,"%d Wins!!!",(leftPlayerWin()?1:2));
-                        sprintf(score, "%d - %d", score1, score2);
+                        snprintf(winner, 256, "%d Wins!!!",(leftPlayerWin()?1:2));
+                        snprintf(score, 256, "%d - %d", score1, score2);
                         menu_set_value(commander->gameOverMenu, kPlayer, winner, 1);
                         menu_set_value(commander->gameOverMenu, kScore,  score, 1);
                     }
                     else if (commander->gameOverMenu == commander->nextLevelMenu) {
                         char level[256];
                         extern char *AI_NAMES[];
-                        sprintf(level, "Stage %d... Vs %s", score2+1, AI_NAMES[score2]);
+                        snprintf(level, 256, "Stage %d... Vs %s", score2+1, AI_NAMES[score2]);
                         menu_set_value(commander->gameOverMenu, kNextLevel, level, 1);
                     }
                     else if (commander->gameOverMenu == commander->looserMenu) {
                         char level[256];
                         char cont[256];
-                        sprintf(level, "Stage %d... Vs %s", score2+1, p2name);
-                        sprintf(cont, "%d Left", lives);
+                        snprintf(level, 256, "Stage %d... Vs %s", score2+1, p2name);
+                        snprintf(cont, 256, "%d Left", lives);
                         menu_set_value(commander->gameOverMenu, kCurrentLevel, level, 1);
                         menu_set_value(commander->gameOverMenu, kContinueLeft, cont, 1);
                     }
                     else if (commander->gameOverMenu == commander->gameOver1PMenu) {
                         char level[256];
-                        sprintf(level, "Stage %d... Vs %s", score2+1, p2name);
+                        snprintf(level, 256, "Stage %d... Vs %s", score2+1, p2name);
                         menu_set_value(commander->gameOverMenu, kYouGotToLevel, level, 1);
                     }
                     commander->showGameOver();

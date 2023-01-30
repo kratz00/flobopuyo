@@ -2,7 +2,7 @@
 #include <SDL_image.h>
 #include <cmath>
 #include <cstdlib>
-
+#include <cstdio>
 
 extern char *dataFolder;
 
@@ -19,7 +19,7 @@ IIM_Surface * IIM_Load_DisplayFormat (const char *fname)
 {
   char path[1024];
   SDL_Surface *tmpsurf, *retsurf;
-  sprintf(path, "%s/gfx/%s", dataFolder, fname);
+  snprintf(path, 1024, "%s/gfx/%s", dataFolder, fname);
   tmpsurf = IMG_Load (path);
   if (tmpsurf==0) {
     fprintf(stderr,"Could not load %s\n", path);
@@ -34,7 +34,7 @@ IIM_Surface * IIM_Load_DisplayFormatAlpha (const char *fname)
 {
   char path[1024];
   SDL_Surface *tmpsurf, *retsurf;
-  sprintf(path, "%s/gfx/%s", dataFolder, fname);
+  snprintf(path, 1024, "%s/gfx/%s", dataFolder, fname);
   tmpsurf = IMG_Load (path);
   if (tmpsurf==0) {
     fprintf(stderr,"Could not load %s\n", path);
