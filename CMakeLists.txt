@@ -59,6 +59,12 @@ target_compile_definitions(flobopuyo
     PRIVATE DATADIR=\"${CMAKE_SOURCE_DIR}/data\"
 )
 
+if(APPLE)
+    target_compile_definitions(flobopuyo
+        PRIVATE GL_SILENCE_DEPRECATION
+    )
+endif()
+
 target_include_directories(flobopuyo
     PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
 )
