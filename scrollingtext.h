@@ -9,7 +9,7 @@
 
 typedef struct _SCROLLING_TEXT ScrollingText;
 
-/// mettre NULL pour créer un objet vide.. et affecter ce qu'on veut + tard
+/// mettre NULL pour crÃ©er un objet vide.. et affecter ce qu'on veut + tard
 ScrollingText *scrolling_text_new (const char *text, SoFont * font);
 void    scrolling_text_set_font (ScrollingText * st, SoFont * font);
 void    scrolling_text_set_text (ScrollingText * st, const char *text);

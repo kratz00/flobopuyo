@@ -32,7 +32,7 @@
   * * Strings changed to 'const char *'
   * * Cursor tests first check if '|' is present.
   * * Shadowed variables fixed.
-  * * Garbage data in spacing table fixed. (Thanks to Andreas Spångberg for
+  * * Garbage data in spacing table fixed. (Thanks to Andreas SpÃ¥ngberg for
   *   discovering this one!)
   * 
   * Put back into C by Jean-Christophe Hoelt <jeko@free.fr> */

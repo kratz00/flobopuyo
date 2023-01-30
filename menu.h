@@ -36,9 +36,9 @@ void    menu_draw (Menu * menu, SDL_Surface * surf);
 /// null pour desactiver.
 void    menu_set_sounds (Menu * menu, Sound * s_move, Sound * s_validate);
 
-/// informe le menu que le choix a été fait..
+/// informe le menu que le choix a Ã©tÃ© fait..
 /// (continuer d'appeler la methode d'affichage du menu..
-/// il se chargera de ne rien faire si rien n'est à faire).
+/// il se chargera de ne rien faire si rien n'est Ã  faire).
 void    menu_validate (Menu * menu);
 
 void    menu_show (Menu * menu);

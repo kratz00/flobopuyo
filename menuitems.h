@@ -42,7 +42,7 @@ void    menu_items_set_font_for (MenuItems mi,
 																 const char *name, SoFont * font);
 SoFont *menu_items_get_font (MenuItems mi, const char *name);
 
-/// !!! une copie interne de value est créée !!!
+/// !!! une copie interne de value est crÃ©Ã©e !!!
 void    menu_items_set_value_for (MenuItems mi, const char *name, const char *value);
 const char *menu_items_get_value (MenuItems mi, const char *name);
 
