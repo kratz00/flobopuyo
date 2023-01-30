@@ -307,7 +307,7 @@ void PuyoGame::setPuyoCellAt(int X, int Y, PuyoState value)
 		return;*/
   if (puyoCells[X + Y * PUYODIMX])
     puyoCells[X + Y * PUYODIMX]->setPuyoState(value);
-};
+}
 
 // Set the puyo at the indicated coordinates
 void PuyoGame::setPuyoAt(int X, int Y, PuyoPuyo *newPuyo)
