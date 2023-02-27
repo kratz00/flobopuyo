@@ -1,6 +1,6 @@
 #include <stdbool.h>
 #include "sofont.h"
-#include "string.h"
+#include <SDL2/SDL.h>
 
 struct _SOFONT
 {
@@ -318,7 +318,7 @@ SoFont_load (SoFont * font, IIM_Surface * FontSurface)
 
 	font->max_i = START_CHAR + i - 1;
 	font->background = SoFontGetPixel (font->picture->surf, 0, font->height);
-	SDL_SetColorKey (font->picture->surf, SDL_SRCCOLORKEY, font->background);
+	//SDL_SetColorKey (font->picture->surf, SDL_SRCCOLORKEY, font->background);
 	SoFont_CleanSurface (font);
 
 	font->CharPos = (int *) malloc (i * sizeof (int));
@@ -385,7 +385,7 @@ void
 SoFont_Refresh(SoFont * font)
 {
 	font->background = SoFontGetPixel (font->picture->surf, 0, font->height);
-	SDL_SetColorKey (font->picture->surf, SDL_SRCCOLORKEY, font->background);
+	//SDL_SetColorKey (font->picture->surf, SDL_SRCCOLORKEY, font->background);
 	SoFont_CleanSurface (font);
 }
 

@@ -207,8 +207,8 @@ PuyoStarter::PuyoStarter(PuyoCommander *commander, bool aiLeft, int aiLevel, IA_
                                                 background->w, background->h, 32,
                                                 fmt->Rmask, fmt->Gmask,
                                                 fmt->Bmask, fmt->Amask);
-        gameScreen = painter.gameScreen = IIM_RegisterImg(SDL_DisplayFormat(tmp), false);
-        SDL_FreeSurface(tmp);
+        gameScreen = painter.gameScreen = IIM_RegisterImg(tmp, false);
+        //SDL_FreeSurface(tmp);
     }
     painter.redrawAll(painter.gameScreen->surf);
     
@@ -343,7 +343,6 @@ void PuyoStarter::run(int _score1, int _score2, int lives, int point1, int point
     this->score2 = _score2;
     SDL_Event event;
     int quit = 0;
-    SDL_EnableUNICODE(1);
     int keysDown[FPKEY_keyNumber] = {0,0,0,0,0,0,0,0,0,0};
     
     gameSpeed = 20;
