@@ -56,4 +56,4 @@ jobs:
       run: cmake -B build -G Ninja
 
     - name: Build
-      run: cmake --build build --config Debug --verbose --parallel
+      run: cmake --build build --verbose --parallel
